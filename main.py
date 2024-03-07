@@ -1,4 +1,5 @@
 import random
+import time
 from datetime import datetime
 
 import faker
@@ -55,43 +56,45 @@ def create_table(conn):
 
 
 if __name__ == "__main__":
-    conn = psycopg2.connect(
-        host="localhost",
-        database="financial_db",
-        user="postgres",
-        password="postgres",
-        port=5432,
-    )
+    for i in range(100):
+        conn = psycopg2.connect(
+            host="localhost",
+            database="opexdb",
+            user="postgres",
+            password="postgres",
+            port=5432,
+        )
 
-    create_table(conn)
+        create_table(conn)
 
-    transaction = generate_transaction()
-    cur = conn.cursor()
-    print(transaction)
+        transaction = generate_transaction()
+        cur = conn.cursor()
+        print(transaction)
 
-    cur.execute(
-        """
-        INSERT INTO transactions(transaction_id, user_id, timestamp, amount, currency, city, country, merchant_name, payment_method, 
-        ip_address, affiliateId, voucher_code)
-        VALUES (%s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
-        """,
-        (
-            transaction["transactionId"],
-            transaction["userId"],
-            datetime.fromtimestamp(transaction["timestamp"]).strftime(
-                "%Y-%m-%d %H:%M:%S"
+        cur.execute(
+            """
+            INSERT INTO transactions(transaction_id, user_id, timestamp, amount, currency, city, country, merchant_name, payment_method,
+            ip_address, affiliateId, voucher_code)
+            VALUES (%s, %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+            """,
+            (
+                transaction["transactionId"],
+                transaction["userId"],
+                datetime.fromtimestamp(transaction["timestamp"]).strftime(
+                    "%Y-%m-%d %H:%M:%S"
+                ),
+                transaction["amount"],
+                transaction["currency"],
+                transaction["city"],
+                transaction["country"],
+                transaction["merchantName"],
+                transaction["paymentMethod"],
+                transaction["ipAddress"],
+                transaction["affiliateId"],
+                transaction["voucherCode"],
             ),
-            transaction["amount"],
-            transaction["currency"],
-            transaction["city"],
-            transaction["country"],
-            transaction["merchantName"],
-            transaction["paymentMethod"],
-            transaction["ipAddress"],
-            transaction["affiliateId"],
-            transaction["voucherCode"],
-        ),
-    )
+        )
 
-    cur.close()
-    conn.commit()
+        cur.close()
+        conn.commit()
+        time.sleep(0.5)

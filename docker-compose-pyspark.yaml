@@ -4,7 +4,8 @@ services:
   pyspark-notebook:
     image: jupyter/pyspark-notebook:latest
     ports:
-      - "8888:8888"
+      - "8888:8888" # Jupyter notebook
+      - "4040:4040" # Spark UI
     volumes:
       - ./notebooks:/home/jovyan/work
     environment:

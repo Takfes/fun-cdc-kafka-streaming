@@ -10,8 +10,7 @@ if [ ! -d .git ]; then
 fi
 
 # Check if pre-commit is installed
-if ! command -v pre-commit &> /dev/null
-then
+if ! command -v pre-commit &>/dev/null; then
     echo "pre-commit is not installed. Installing..."
     pip install pre-commit
 fi

@@ -1,9 +1,9 @@
 -- https://www.postgresqltutorial.com/postgresql-administration/postgresql-show-tables/
 psql -U postgres
 \l
-\c financial_db
+\c opexdb
 \dt
 
-psql -U postgres -d financial_db
+psql -U postgres -d opexdb
 \dt
 \d transactions
