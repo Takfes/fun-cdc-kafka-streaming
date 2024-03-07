@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  pyspark-notebook:
+    image: jupyter/pyspark-notebook:latest
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/home/jovyan/work
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - PYSPARK_SUBMIT_ARGS=--packages org.apache.spark:spark-streaming-kafka-0-10_2.12:3.5.0,org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 pyspark-shell
+    networks:
+      - code-with-yu
+
+networks:
+  code-with-yu:
+    external: true
