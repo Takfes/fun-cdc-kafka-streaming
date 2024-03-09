@@ -56,7 +56,10 @@ def create_table(conn):
 
 
 if __name__ == "__main__":
-    for i in range(100):
+    NOBSV = 30
+    SLEEP = 0.1
+
+    for i in range(NOBSV):
         conn = psycopg2.connect(
             host="localhost",
             database="opexdb",
@@ -97,4 +100,4 @@ if __name__ == "__main__":
 
         cur.close()
         conn.commit()
-        time.sleep(0.5)
+        time.sleep(SLEEP)

@@ -1,0 +1,292 @@
+{
+  "schema": {
+    "type": "struct",
+    "fields": [
+      {
+        "type": "struct",
+        "fields": [
+          {
+            "type": "string",
+            "optional": false,
+            "field": "transaction_id"
+          },
+          {
+            "type": "string",
+            "optional": true,
+            "field": "user_id"
+          },
+          {
+            "type": "int64",
+            "optional": true,
+            "name": "io.debezium.time.MicroTimestamp",
+            "version": 1,
+            "field": "timestamp"
+          },
+          {
+            "type": "string",
+            "optional": true,
+            "field": "amount"
+          },
+          {
+            "type": "string",
+            "optional": true,
+            "field": "currency"
+          },
+          {
+            "type": "string",
+            "optional": true,
+            "field": "city"
+          },
+          {
+            "type": "string",
+            "optional": true,
+            "field": "country"
+          },
+          {
+            "type": "string",
+            "optional": true,
+            "field": "merchant_name"
+          },
+          {
+            "type": "string",
+            "optional": true,
+            "field": "payment_method"
+          },
+          {
+            "type": "string",
+            "optional": true,
+            "field": "ip_address"
+          },
+          {
+            "type": "string",
+            "optional": true,
+            "field": "voucher_code"
+          },
+          {
+            "type": "string",
+            "optional": true,
+            "field": "affiliateid"
+          }
+        ],
+        "optional": true,
+        "name": "cdc.public.transactions.Value",
+        "field": "before"
+      },
+      {
+        "type": "struct",
+        "fields": [
+          {
+            "type": "string",
+            "optional": false,
+            "field": "transaction_id"
+          },
+          {
+            "type": "string",
+            "optional": true,
+            "field": "user_id"
+          },
+          {
+            "type": "int64",
+            "optional": true,
+            "name": "io.debezium.time.MicroTimestamp",
+            "version": 1,
+            "field": "timestamp"
+          },
+          {
+            "type": "string",
+            "optional": true,
+            "field": "amount"
+          },
+          {
+            "type": "string",
+            "optional": true,
+            "field": "currency"
+          },
+          {
+            "type": "string",
+            "optional": true,
+            "field": "city"
+          },
+          {
+            "type": "string",
+            "optional": true,
+            "field": "country"
+          },
+          {
+            "type": "string",
+            "optional": true,
+            "field": "merchant_name"
+          },
+          {
+            "type": "string",
+            "optional": true,
+            "field": "payment_method"
+          },
+          {
+            "type": "string",
+            "optional": true,
+            "field": "ip_address"
+          },
+          {
+            "type": "string",
+            "optional": true,
+            "field": "voucher_code"
+          },
+          {
+            "type": "string",
+            "optional": true,
+            "field": "affiliateid"
+          }
+        ],
+        "optional": true,
+        "name": "cdc.public.transactions.Value",
+        "field": "after"
+      },
+      {
+        "type": "struct",
+        "fields": [
+          {
+            "type": "string",
+            "optional": false,
+            "field": "version"
+          },
+          {
+            "type": "string",
+            "optional": false,
+            "field": "connector"
+          },
+          {
+            "type": "string",
+            "optional": false,
+            "field": "name"
+          },
+          {
+            "type": "int64",
+            "optional": false,
+            "field": "ts_ms"
+          },
+          {
+            "type": "string",
+            "optional": true,
+            "name": "io.debezium.data.Enum",
+            "version": 1,
+            "parameters": {
+              "allowed": "true,last,false,incremental"
+            },
+            "default": "false",
+            "field": "snapshot"
+          },
+          {
+            "type": "string",
+            "optional": false,
+            "field": "db"
+          },
+          {
+            "type": "string",
+            "optional": true,
+            "field": "sequence"
+          },
+          {
+            "type": "string",
+            "optional": false,
+            "field": "schema"
+          },
+          {
+            "type": "string",
+            "optional": false,
+            "field": "table"
+          },
+          {
+            "type": "int64",
+            "optional": true,
+            "field": "txId"
+          },
+          {
+            "type": "int64",
+            "optional": true,
+            "field": "lsn"
+          },
+          {
+            "type": "int64",
+            "optional": true,
+            "field": "xmin"
+          }
+        ],
+        "optional": false,
+        "name": "io.debezium.connector.postgresql.Source",
+        "field": "source"
+      },
+      {
+        "type": "string",
+        "optional": false,
+        "field": "op"
+      },
+      {
+        "type": "int64",
+        "optional": true,
+        "field": "ts_ms"
+      },
+      {
+        "type": "struct",
+        "fields": [
+          {
+            "type": "string",
+            "optional": false,
+            "field": "id"
+          },
+          {
+            "type": "int64",
+            "optional": false,
+            "field": "total_order"
+          },
+          {
+            "type": "int64",
+            "optional": false,
+            "field": "data_collection_order"
+          }
+        ],
+        "optional": true,
+        "name": "event.block",
+        "version": 1,
+        "field": "transaction"
+      }
+    ],
+    "optional": false,
+    "name": "cdc.public.transactions.Envelope",
+    "version": 1
+  },
+  "payload": {
+    "before": null,
+    "after": {
+      "transaction_id": "fd48ad7b-f02a-4c6b-8bb0-56adbd677838",
+      "user_id": "robert38",
+      "timestamp": 1709846057000000,
+      "amount": "18.04",
+      "currency": "USD",
+      "city": "Adamchester",
+      "country": "Ghana",
+      "merchant_name": "Perry, Miller and Zimmerman",
+      "payment_method": "debit_card",
+      "ip_address": "125.111.176.120",
+      "voucher_code": "",
+      "affiliateid": "ef7b99bb-5be4-47f9-8136-75cae8d24331"
+    },
+    "source": {
+      "version": "2.5.2.Final",
+      "connector": "postgresql",
+      "name": "cdc",
+      "ts_ms": 1709846057446,
+      "snapshot": "false",
+      "db": "opexdb",
+      "sequence": "[\"26864040\",\"26864040\"]",
+      "schema": "public",
+      "table": "transactions",
+      "txId": 879,
+      "lsn": 26864040,
+      "xmin": null
+    },
+    "op": "c",
+    "ts_ms": 1709846057658,
+    "transaction": null
+  }
+}
