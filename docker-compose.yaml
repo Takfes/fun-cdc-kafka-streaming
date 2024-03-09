@@ -159,6 +159,7 @@ services:
       - ./notebooks:/home/jovyan/work
     environment:
       - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=8888
       - PYSPARK_SUBMIT_ARGS=--packages org.apache.spark:spark-streaming-kafka-0-10_2.12:3.5.0,org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0 pyspark-shell
     networks:
       code-with-yu:

@@ -1,6 +1,6 @@
 select * from information_schema.tables where table_schema = 'public';
 
-select * from transactions t; 
+select * from transactions t;
 
 update transactions set amount = amount - 328.68 where transaction_id = 'f13872b0-50d3-46c9-bf00-d5a62e750793';
 
@@ -10,6 +10,7 @@ select * from transactions t where transaction_id = '0f2ad721-60b1-48d6-9a2d-ab6
 
 update transactions set amount = 555 where transaction_id = '0f2ad721-60b1-48d6-9a2d-ab6c04a6cb5e';
 
+-- capture before records on debezium
 alter table transactions replica identity full;
 
 

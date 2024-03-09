@@ -1,5 +1,9 @@
 # # from terminal
 # curl localhost:8093/connectors
+# curl -XGET localhost:8093/connectors?expand=status | jq
+# curl -XGET localhost:8093/connectors?expand=info | jq
+# curl -XGET localhost:8093/connectors/postgres-connector | jq
+# curl -XDELETE localhost:8093/connectors/postgres-connector
 
 # from terminal
 curl -H 'Content-Type: application/json' -X POST localhost:8093/connectors --data '{

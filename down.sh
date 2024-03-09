@@ -1,1 +1,1 @@
-docker-compose -f docker-compose-B.yaml down
+docker-compose -f docker-compose.yaml down
