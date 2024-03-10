@@ -60,7 +60,7 @@ def create_table(conn):
 
 if __name__ == "__main__":
     NOBSV = 10
-    SLEEP = 1
+    SLEEP = 2
     # Define the connection parameters
     server = "localhost"
     database = "opexdb"

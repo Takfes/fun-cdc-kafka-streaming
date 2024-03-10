@@ -9,12 +9,12 @@ SELECT * FROM sys.databases sd;
 CREATE DATABASE opexdb;
 USE opexdb;
 
-USE master;
-DROP DATABASE opexdb;
+--USE master;
+--DROP DATABASE opexdb;
 
-select * from sysobjects where name='transactions' and xtype='U';
+--select * from sysobjects where name='transactions' and xtype='U';
 
-DROP TABLE transactions;
+--DROP TABLE transactions;
 
 if not exists (select * from sysobjects where name='transactions' and xtype='U')
 BEGIN
@@ -53,3 +53,31 @@ VALUES ('392b885b-5913-49ed-9c09-b4b5316b6ac5',
  '');
 
 SELECT * from transactions t;
+
+
+-- https://github.com/InterruptSpeed/sql-server-cdc-with-pyspark
+-- https://medium.com/@rajatbelgundi/streaming-sql-server-data-to-kafka-using-debezium-sql-connector-on-docker-1bbb1cedfdb3
+-- https://hevodata.com/learn/debezium-sql-server/#8
+
+-- Enable CDC at the Database Level
+EXEC sys.sp_cdc_enable_db;
+
+ALTER DATABASE opexdb SET CHANGE_TRACKING = ON
+(CHANGE_RETENTION = 2 DAYS, AUTO_CLEANUP = ON);
+
+-- Enable CDC at Table level
+EXEC sys.sp_cdc_enable_table
+	@source_schema = 'dbo',
+	@source_name = 'transactions',
+	@role_name = NULL,
+	@capture_instance='transactions_instance',
+	@supports_net_changes = 1;
+
+-- source_schema is the database object
+-- source_name is the table name
+-- capture_instance is the name of the instance of the CDC enabled table
+
+EXEC sys.sp_cdc_help_change_data_capture;
+
+
+select * from cdc.transactions_instance_CT tic
