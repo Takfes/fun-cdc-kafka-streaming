@@ -54,6 +54,8 @@ VALUES ('392b885b-5913-49ed-9c09-b4b5316b6ac5',
 
 SELECT * from transactions t;
 
+SELECT count(*) from transactions t;
+
 
 -- https://github.com/InterruptSpeed/sql-server-cdc-with-pyspark
 -- https://medium.com/@rajatbelgundi/streaming-sql-server-data-to-kafka-using-debezium-sql-connector-on-docker-1bbb1cedfdb3
@@ -79,5 +81,17 @@ EXEC sys.sp_cdc_enable_table
 
 EXEC sys.sp_cdc_help_change_data_capture;
 
+sp_configure 'show advanced options', 1;
+RECONFIGURE;
 
-select * from cdc.transactions_instance_CT tic
+sp_configure 'clr enabled', 1;
+RECONFIGURE;
+
+EXEC sp_configure 'lightweight pooling';
+
+EXEC sp_configure 'clr enabled';
+EXEC sp_configure 'clr enabled', 1;
+RECONFIGURE;
+EXEC sp_configure 'clr enabled';
+
+select * from cdc.transactions_instance_CT tic;
